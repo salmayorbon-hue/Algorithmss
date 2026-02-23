@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Algorithms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.9;
+            color: #2c3e50;
+            background-color: #eef2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 45px;
+            padding-bottom: 25px;
+            border-bottom: 4px solid #3498db;
+        }
+        
+        h1 {
+            color: #1a5276;
+            font-size: 3em;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+        
+        .word-pronunciation {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: #2471a3;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 5px solid #3498db;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.08em;
+        }
+        
+        .definition-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e6f1 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 6px solid #3498db;
+        }
+        
+        .definition-box p {
+            margin-bottom: 0;
+            font-size: 1.15em;
+            line-height: 1.85;
+        }
+        
+        .definition-box strong {
+            color: #1a5276;
+        }
+        
+        .example-section {
+            margin-top: 40px;
+        }
+        
+        .example-box {
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .example-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .denotative-example {
+            background-color: #e8f8f5;
+            border: 2px solid #27ae60;
+            border-left-width: 6px;
+        }
+        
+        .connotative-example {
+            background-color: #fdedec;
+            border: 2px solid #e74c3c;
+            border-left-width: 6px;
+        }
+        
+        .example-label {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .denotative-example .example-label {
+            background-color: #27ae60;
+        }
+        
+        .connotative-example .example-label {
+            background-color: #e74c3c;
+        }
+        
+        .sentence {
+            font-size: 1.2em;
+            font-style: italic;
+            color: #2c3e50;
+            line-height: 1.9;
+            margin-bottom: 18px;
+            padding-left: 15px;
+            border-left: 3px solid rgba(0,0,0,0.1);
+        }
+        
+        .explanation {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 18px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #5d6d7e;
+            line-height: 1.8;
+        }
+        
+        .arabic-text {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.95em;
+        }
+        
+        .highlight {
+            background-color: #fef9e7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #f1c40f;
+        }
+        
+        .key-point {
+            font-weight: 600;
+            color: #1a5276;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 55px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+            color: #95a5a6;
+            font-size: 0.95em;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            position: relative;
+            padding: 12px 0 12px 30px;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .sentence {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ALGORITHMS</h1>
+            <p class="word-pronunciation">/ˈalɡəˌriT͟Həm/</p>
+        </header>
+        
+        <h2>Etymology</h2>
+        <p>
+            The word "algorithm" has a fascinating historical journey that spans continents and 
+            centuries. It derives from the name of the celebrated Persian mathematician and 
+            astronomer <span class="key-point">Muhammad ibn Musa al-Khwarizmi</span> (c. 780–850 CE), 
+            who lived during the Abbasid Caliphate in Baghdad, a major center of learning during 
+            the Islamic Golden Age.
+        </p>
+        <p>
+            Al-Khwarizmi made groundbreaking contributions to mathematics, particularly in the 
+            development of algebra. His seminal treatise, <span class="arabic-text">"Al-Kitab 
+            al-Mukhtasar fi Hisab al-Jabr wal-Muqabala"</span> (The Compendious Book on Calculation 
+            by Completion and Balancing), introduced systematic methods for solving linear and 
+            quadratic equations. This work not only established algebra as an independent discipline 
+            but also introduced the Hindu-Arabic numeral system to the Islamic world and later to Europe.
+        </p>
+        <p>
+            The Latinized version of his name, <strong>"Algoritmi"</strong>, became associated with 
+            arithmetic and mathematical procedures in medieval Europe. When his works were translated 
+            into Latin during the 12th century, the term "algorism" emerged to describe the systematic 
+            methods of calculation using the Hindu-Arabic numeral system. Over the following centuries, 
+            the term gradually expanded in meaning to encompass any well-defined set of rules for 
+            solving problems or accomplishing tasks, regardless of whether the task involved mathematics.
+        </p>
+        <div class="highlight">
+            <p>
+                <strong>Historical Timeline:</strong> The term evolved from a scholar's name in the 
+                9th century, to "algorism" for arithmetic methods in medieval Europe, to the modern 
+                "algorithm" encompassing all computational procedures in the 20th century with the 
+                rise of computer science.
+            </p>
+        </div>
+        
+        <h2>Definition</h2>
+        <div class="definition-box">
+            <p>
+                <strong>Algorithm (noun):</strong> A finite sequence of well-defined, step-by-step 
+                instructions for solving a specific problem, performing a computation, or accomplishing 
+                a particular task. In computer science and mathematics, an algorithm serves as a precise 
+                blueprint that guides computational processes from simple arithmetic calculations to 
+                complex operations in artificial intelligence systems.
+            </p>
+        </div>
+        <p>
+            For a procedure to qualify as an algorithm, it must satisfy several essential criteria. 
+            First, it must be <span class="key-point">precise</span>—each instruction must be 
+            unambiguous and clearly specified, leaving no room for interpretation. Second, it must 
+            be <span class="key-point">finite</span>—it must eventually terminate after completing 
+            a specific number of steps. Third, it must be <span class="key-point">effective</span>— 
+            each step must be simple enough to be performed exactly, either by a human or by a computer. 
+            Finally, an algorithm must produce a <span class="key-point">correct output</span> for 
+            any valid input, guaranteeing the desired result when executed properly.
+        </p>
+        <p>
+            Algorithms can be expressed in various forms, including natural language, flowcharts, 
+            programming code, and formal mathematical notation. They form the foundation of all 
+            software applications, from simple calculators to sophisticated machine learning systems 
+            that power modern technology.
+        </p>
+        
+        <h2>Example Sentences</h2>
+        
+        <div class="example-section">
+            <h3>Denotative Meaning</h3>
+            <div class="example-box denotative-example">
+                <span class="example-label">Denotative Example</span>
+                <p class="sentence">
+                    "The computer science students learned how to implement the <strong>quicksort 
+                    algorithm</strong>, which efficiently arranges elements in ascending order by 
+                    recursively partitioning the list around a pivot element."
+                </p>
+                <div class="explanation">
+                    <strong>Analysis:</strong> In this sentence, "algorithm" is used in its literal, 
+                    technical sense to describe a specific computational procedure for organizing data. 
+                    The context includes precise technical details (quicksort, recursively partitioning, 
+                    pivot element) that demonstrate the objective, factual meaning of the term without 
+                    any emotional overtones or subjective associations.
+                </div>
+            </div>
+            
+            <h3>Connotative Meaning</h3>
+            <div class="example-box connotative-example">
+                <span class="example-label">Connotative Example</span>
+                <p class="sentence">
+                    "Critics argue that social media <strong>algorithms</strong> have too much power 
+                    over what information people consume, creating echo chambers that reinforce existing 
+                    beliefs and potentially manipulate public opinion."
+                </p>
+                <div class="explanation">
+                    <strong>Analysis:</strong> In this sentence, "algorithms" carries significant 
+                    connotative meaning beyond its technical definition. The words "too much power," 
+                    "echo chambers," and "manipulate public opinion" reveal the negative associations 
+                    algorithms can carry in contemporary discourse—suggesting concerns about loss of 
+                    autonomy, corporate control over information, and threats to democratic discourse.
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>
+                Understanding the etymology and dual meanings of "algorithms"—both denotative and 
+                connotative—is essential for informed discussions about the role of technology in 
+                modern society. While algorithms are fundamentally technical concepts, their social 
+                and ethical implications depend heavily on how they are designed, deployed, and governed.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
